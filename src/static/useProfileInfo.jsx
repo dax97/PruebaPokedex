@@ -10,4 +10,4 @@ function useProfileInfo()
     };
 }
 
-export { useProfileInfo }
+export { useProfileInfo };

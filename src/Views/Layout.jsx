@@ -1,9 +1,12 @@
 //////* librerias y componentes nativos *//////
 import React from "react";
 //////* componentes de aplicación *//////
+import { Navbar } from "../Components/Navbar/Navbar"
 import { NavbarLogo } from "../Components/Navbar/NavbarLogo";
 import { NavbarMenu } from "../Components/Navbar/NavbarMenu";
 import { NavbarProfile } from "../Components/Navbar/NavbarProfile";
+import { NavbarLinkGen } from "../Components/Navbar/NavbarLinkGen";
+import { CardCanvas } from "../Components/GeneralUse/CardCanvas";
 //////* importaciones de custom hooks *//////
 import { useMenuLinks } from "../static/useMenuLinks";
 import { useProfileInfo } from "../static/useProfileInfo";
@@ -19,32 +22,33 @@ function Layout({children})
 
     return(
         <>
-            <Header className="">
-                <img className="" src={mainLogo} alt="Pokemon" />
-            </Header>
+            <header className="flex items-center justify-center bg-transparent h-16">
+                <img className="h-full object-contain" src={mainLogo} alt="Pokemon" />
+            </header>
             <Navbar>
-                <NavbarLogo></NavbarLogo>
+                <NavbarLogo mainLogo={mainLogo}/>
                 <NavbarMenu>
                     {
                         links.map(link => <NavbarLinkGen
+                            key={link.name}
                             name={link.name} 
                             icon={link.icon}
                         />)
                     }
-                    <br/>
-                    <br/>
-                    {/* tipos mediante peticion.*/}
+                    <br key={"br1"}/>
+                    <br key={"br2"}/>
+                    {/* tipos mediante peticion. */}
                 </NavbarMenu>
                 <NavbarProfile
                     userName={userInfo.userName}
                     userCareer={userInfo.userCareer}
                 />
             </Navbar>
-            <Main>
+            <main>
                 <CardCanvas>
                     {children}
                 </CardCanvas>
-            </Main>
+            </main>
         </>
     );
 }

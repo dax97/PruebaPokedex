@@ -12,4 +12,4 @@ function PokeDex() {
   )
 }
 
-export default PokeDex
+export { PokeDex }

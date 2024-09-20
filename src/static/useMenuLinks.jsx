@@ -4,12 +4,12 @@ function useMenuLinks()
     const links = [
         {
             name: "Home",
-            url: "/",
+            url: "/*",
             icon: "house",
         },
         {
             name: "Favoritos",
-            url: "/",
+            url: "/Favorites",
             icon: "star",
         }
     ]

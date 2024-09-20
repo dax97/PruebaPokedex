@@ -14,4 +14,4 @@ function Favorites()
     );
 }
 
-export { Favorites }
+export { Favorites };
