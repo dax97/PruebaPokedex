@@ -30,7 +30,7 @@ function Layout({children})
                         links.map(link => <NavbarLinkGen
                             key={link.name}
                             name={link.name} 
-                            icon={link.icon}
+                            iconFa={link.icon}
                         />)
                     }
                     <br key={"br1"}/>

@@ -1,3 +1,6 @@
+import { faHouse } from '@fortawesome/free-solid-svg-icons'
+import { faStar } from '@fortawesome/free-regular-svg-icons';
+
 function useMenuLinks()
 {
 
@@ -5,12 +8,12 @@ function useMenuLinks()
         {
             name: "Home",
             url: "/*",
-            icon: "house",
+            icon: faHouse,
         },
         {
             name: "Favoritos",
             url: "/Favorites",
-            icon: "star",
+            icon: faStar,
         }
     ]
     return{
