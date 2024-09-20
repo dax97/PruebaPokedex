@@ -1,7 +1,7 @@
 function NavbarLogo(props)
 {
     return(
-        <div className="logo-details">
+        <div className="w-full">
             <img className="mainLogo" src={props.mainLogo} alt="PokeDexLOGO" />
         </div>
     );

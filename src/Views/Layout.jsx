@@ -21,10 +21,7 @@ function Layout({children})
     const { userInfo } = useProfileInfo();
 
     return(
-        <>
-            <header className="flex items-center justify-center bg-transparent h-16">
-                <img className="h-full object-contain" src={mainLogo} alt="Pokemon" />
-            </header>
+        <div className="flex h-screen">
             <Navbar>
                 <NavbarLogo mainLogo={mainLogo}/>
                 <NavbarMenu>
@@ -44,12 +41,17 @@ function Layout({children})
                     userCareer={userInfo.userCareer}
                 />
             </Navbar>
-            <main>
-                <CardCanvas>
-                    {children}
-                </CardCanvas>
-            </main>
-        </>
+            <div className="flex-1 flex flex-col relative ml-64">
+                <header className="flex items-center justify-center bg-transparent h-16">
+                    <img className="h-full object-contain" src={mainLogo} alt="Pokemon" />
+                </header>
+                <main>
+                    <CardCanvas>
+                        {children}
+                    </CardCanvas>
+                </main>
+            </div>
+        </div>
     );
 }
 

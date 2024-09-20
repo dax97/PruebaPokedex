@@ -5,7 +5,7 @@ function NavbarProfile(props)
     return(
         <div className="profile-details">
             <div className="profile-content">
-                <img src={!props.pokeDexPhoto ? profilePng : props.pokeDexPhoto} alt="Nombre de Usuario"/> :
+                <img src={!props.pokeDexPhoto ? profilePng : props.pokeDexPhoto} alt="Nombre de Usuario"/>
             </div>
             <div className="name-job">
                 <div className="profile_name">{props.userName}</div>
