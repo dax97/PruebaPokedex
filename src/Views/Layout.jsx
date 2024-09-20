@@ -24,6 +24,7 @@ function Layout({children})
         <div className="flex h-screen">
             <Navbar>
                 <NavbarLogo mainLogo={mainLogo}/>
+                <br />
                 <NavbarMenu>
                     {
                         links.map(link => <NavbarLinkGen
