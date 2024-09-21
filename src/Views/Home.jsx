@@ -4,12 +4,15 @@ import { Layout } from "./Layout";
 //////* importaciones de custom hooks *//////
 //////* Hojas de estilo *//////
 //////* Importaciones Multimedia *//////
+import mainLogo from "../assets/img/TitleLogo.png";
 
 function Home()
 {
     return(
-        <Layout>
-
+        <Layout
+            mainLogo={mainLogo}
+        >
+            
         </Layout>
     );
 }

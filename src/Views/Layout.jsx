@@ -1,5 +1,6 @@
 //////* librerias y componentes nativos *//////
 import React from "react";
+import { useNavigate } from "react-router-dom";
 //////* componentes de aplicación *//////
 import { Navbar } from "../Components/Navbar/Navbar"
 import { NavbarLogo } from "../Components/Navbar/NavbarLogo";
@@ -12,18 +13,30 @@ import { useMenuLinks } from "../static/useMenuLinks";
 import { useProfileInfo } from "../static/useProfileInfo";
 //////* Hojas de estilo *//////
 //////* Importaciones Multimedia *//////
-import mainLogo from "../assets/img/TitleLogo.png";
+import NavbarLogoXl from "../assets/img/TitleLogo.png";
 
-function Layout({children})
+
+function Layout({children, mainLogo})
 {
+    //////////* Control de Rutas del Navbar Menu *//////////
 
+    const navigate = useNavigate();
+
+    function navigateView(vista)
+    {
+        navigate(`/${vista}`)
+    }
+
+    //////////* informacion estatica *//////////
     const { links } = useMenuLinks();
+
+    //////////* demo de uso de perfil *//////////
     const { userInfo } = useProfileInfo();
 
     return(
         <div className="flex h-screen">
             <Navbar>
-                <NavbarLogo mainLogo={mainLogo}/>
+                <NavbarLogo mainLogo={NavbarLogoXl}/>
                 <br />
                 <NavbarMenu>
                     {
@@ -31,6 +44,7 @@ function Layout({children})
                             key={link.name}
                             name={link.name} 
                             iconFa={link.icon}
+                            onMenu = {() => {navigateView(link.url)}}
                         />)
                     }
                     <br key={"br1"}/>

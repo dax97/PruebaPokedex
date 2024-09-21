@@ -8,7 +8,7 @@ function AppRouter()
         <Routes>
             //////* Directorio *//////
             <Route path="/*" element={<Rutas.Home/>} />
-            <Route path="/Favorites" elemet={<Rutas.Favorites/>}/>
+            <Route path="/favorites" element={<Rutas.Favorites/>}/>
         </Routes>
     );
 }
