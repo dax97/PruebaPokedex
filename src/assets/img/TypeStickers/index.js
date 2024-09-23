@@ -1,20 +1,43 @@
-export { NormalType } from "./NormalType.png";
-export { FightType }  from "./FightType.png";
-export { FlyingType } from "./FlyingType.png";
-export { PoisonType } from "./PoisonType.png";
-export { GroundType } from "./GroundType.png";
-export { RockType } from "./RockType.png";
-export { BugType } from "./BugType.png";
-export { GhostType } from "./GhostType.png";
-export { SteelType } from "./SteelType.png";
-export { FireType } from "./FireType.png";
-export { WaterType } from "./WaterType.png";
-export { GrassType } from "./GrassType.png";
-export { ElectricType } from "./ElectricType.png";
-export { PsychicType } from "./PsychicType.png";
-export { IceType } from "./IceType.png";
-export { DragonType } from "./DragonType.png";
-export { DarkType } from "./DarkType.png";
-export { FairyType } from "./FairyType.png";
-export { StellarType } from "./StellarType.png";
-export { UnknownType } from "./UnknownType.png";
+import NormalType from "./NormalType.png";
+import FightType from "./FightType.png";
+import FlyingType from "./FlyingType.png";
+import PoisonType from "./PoisonType.png";
+import GroundType from "./GroundType.png";
+import RockType from "./RockType.png";
+import BugType from "./BugType.png";
+import GhostType from "./GhostType.png";
+import SteelType from "./SteelType.png";
+import FireType from "./FireType.png";
+import WaterType from "./WaterType.png";
+import GrassType from "./GrassType.png";
+import ElectricType from "./ElectricType.png";
+import PsychicType from "./PsychicType.png";
+import IceType from "./IceType.png";
+import DragonType from "./DragonType.png";
+import DarkType from "./DarkType.png";
+import FairyType from "./FairyType.png";
+import StellarType from "./StellarType.png";
+import UnknownType from "./UnknownType.png";
+
+export const Types = {
+  NormalType,
+  FightType,
+  FlyingType,
+  PoisonType,
+  GroundType,
+  RockType,
+  BugType,
+  GhostType,
+  SteelType,
+  FireType,
+  WaterType,
+  GrassType,
+  ElectricType,
+  PsychicType,
+  IceType,
+  DragonType,
+  DarkType,
+  FairyType,
+  StellarType,
+  UnknownType,
+};
