@@ -1,35 +1,26 @@
-//////* librerias y componentes nativos */////
-
-/////* componentes de aplicación *//////
+import React from "react";
 import { Layout } from "./Layout";
 import { PokeCard } from "../Components/Cards/PokeCard";
 import { FavoriteStarButton } from "../Components/GeneralUse/FavoriteStarButton";
 import { TypeSticker } from "../Components/GeneralUse/TypeSicker";
-//////* importaciones de custom hooks *//////
 import { usePokemonList } from "../hooks/usePokemonList";
 import { useIsMobile } from "../hooks/useIsMobile";
 import { useTypes } from "../hooks/useTypes"; 
-//////* Hojas de estilo *//////
-//////* Importaciones Multimedia *//////
+import { useFavorites } from "../hooks/useFavorites"; // Importa el hook de favoritos
 import mainLogo from "../assets/img/TitleLogo.png";
 
 function Home() {
-    //////////* Hooks *//////////
     const isMobile = useIsMobile();
-    const {
-        pokemonList,
-        detailedPokemon,
-        setError,
-    } = usePokemonList();
+    const { detailedPokemon } = usePokemonList();
     const { getTypeSprites } = useTypes();
+    const { toggleFavorite, isFavorite } = useFavorites(); // Usa los favoritos
 
-    //////////* Variables *//////////
     return (
         <Layout mainLogo={mainLogo}>
             {
                 detailedPokemon.map((pokemon, index) => (
                     <PokeCard
-                        key={`${pokemon.id}-${index}`} // Asegúrate de que key sea único
+                        key={`${pokemon.id}-${index}`}
                         extraContTailwind={"relative w-full md:w-[18%] md:w-1/5 border-4 border-gray-500 mx-1 h-fit"}
                     >
                         <div className="border-4 border-gray-300">
@@ -38,14 +29,13 @@ function Home() {
                             </div>
                             <section className="flex border-t-2 border-black w-full">
                                 <div className="pokecardNumber relative pl-px w-full md:w-4/5 lg:w-full">
-                                    <span>
-                                        {pokemon.id}
-                                    </span>
+                                    <span>{pokemon.id}</span>
                                 </div>
                                 <FavoriteStarButton
-                                    isFavorite={false}
-                                    extraContTailWind={`pokecardNumber relative w-auto md:w-1/5 lg:w-auto`}
-                                ></FavoriteStarButton>
+                                    isFavorite={isFavorite(pokemon.id)}
+                                    onToggleFavorite={() => toggleFavorite(pokemon)}
+                                    extraContTailWind={"pokecardNumber relative w-auto md:w-1/5 lg:w-auto"}
+                                />
                             </section>
                             <div className="pokecardName flex border-t-2 border-black items-center justify-center">
                                 <span>{pokemon.name}</span>

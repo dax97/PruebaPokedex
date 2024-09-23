@@ -1,6 +1,5 @@
 //////* librerias y componentes nativos */////
 import React from "react";
-import Cookies from 'js-cookie';
 /////* API's *//////
 import PokedexApi from "../APIs/pokeDexApi";
 //////* importaciones de custom hooks *//////
