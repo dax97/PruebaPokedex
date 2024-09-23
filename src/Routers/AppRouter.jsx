@@ -1,6 +1,6 @@
 //////* librerias y componentes nativos *//////
 import { Navigate, Route, Routes } from "react-router-dom";
-import * as Rutas from "../Views/index"
+import * as Rutas from "../Views/Index";
 
 function AppRouter()
 {
