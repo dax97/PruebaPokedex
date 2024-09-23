@@ -1,9 +1,10 @@
 import React from "react";
 
-function Navbar({children})
+function Navbar({children, isOpen, isdisplayed})
 {
+
     return(
-        <nav className="flex-none flex flex-col fixed top-0 left-0 h-full w-64 bg-red-600 text-white shadow-lg ">
+        <nav className={`flex flex-none flex-col relative top-0 left-0 h-full bg-red-600 text-white shadow-lg ${isOpen ? " w-1/6" : "w-fit p-2"}`}>
             {
                 React.Children.
                 toArray(children).map(child => React.cloneElement(child))
