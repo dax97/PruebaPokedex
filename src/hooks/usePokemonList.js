@@ -49,13 +49,13 @@ function usePokemonList() {
                 (pokemon) => !detailedPokemon.some((detailed) => detailed.name === pokemon.name)
             );
 
-            if (newPokemons.length === 0) return; // Evita realizar llamadas innecesarias
+            if (newPokemons.length === 0) return;  /* Nuevo: Evita realizar llamadas innecesarias */
 
             const promises = newPokemons.map((pokemon) => PokedexApi.get(pokemon.url));
             const results = await Promise.all(promises);
             const detailedData = results.map((result) => result.data);
 
-            // Añadir solo Pokémon no repetidos
+            /* añade pokemones sin repetir */
             setDetailedPokemon((prev) => {
                 const updatedDetails = [...prev, ...detailedData];
                 return Array.from(new Set(updatedDetails.map(p => p.id))).map(id =>
