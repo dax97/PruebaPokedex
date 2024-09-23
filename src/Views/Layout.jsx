@@ -148,7 +148,7 @@ function Layout({children, mainLogo})
                         <img className="titleLogoImg h-full" src={mainLogo} alt="Pokemon" />
                     </div>
                 </header>
-                <main className="flex w-full">
+                <main className="flex w-full h-fit">
                     <CardCanvas>
                         {children}
                     </CardCanvas>

@@ -25,12 +25,12 @@ function Home()
             {
                 cardsDemo.results.map(card => <PokeCard
                     key={card.name}
-                    extraTailwind={"relative"}
+                    extraContTailwind={"relative w-[18%] md:w-1/5 border-4 border-gray-500 mx-1 h-fit"}
                 >
                     <div className="border-4 border-gray-300">
                         {/* sprite count 1302 se refieren en server, son un chingo. */}
-                        <div className="w-20 h-20">
-                            <img src={pokemonDemo.sprites.front_default} alt="pikachu" />
+                        <div className="flex w-full h-fit items-center justify-center">
+                            <img className="w-40 h-40" src={pokemonDemo.sprites.front_default} alt="pikachu" />
                         </div>
                         <section className="flex border-t-2 border-black w-full">
                             {/* numero de pokemon */}
@@ -48,7 +48,7 @@ function Home()
                             ></FavoriteStarButton>
                         </section>
                         {/* Nombre */}
-                        <div className="flex pokecardName border-t-2 border-black items-center justify-center">
+                        <div className="pokecardName flex border-t-2 border-black items-center justify-center">
                             <span>Pikachu</span>
                         </div>
                         {/* Tipo de pokemon estilizado count:21 se descargan son ux */}
@@ -56,7 +56,8 @@ function Home()
                             <TypeSticker
                                 typeSprite={NormalType}
                                 altString={"Normal"}
-                                extraContTailwind={"pokemonType m-1 relative "}
+                                extraContTailwind={"pokemonType m-1 relative"}
+                                extraTailwind={"w-12 h-6"}
                             >
                             </TypeSticker>
                         </section>

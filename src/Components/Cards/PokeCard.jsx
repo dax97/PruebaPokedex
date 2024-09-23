@@ -4,7 +4,7 @@ function PokeCard({children, extraContTailwind})
 {
     return(
         <>
-            <div className={"border-4 border-gray-500 mx-1"}>
+            <div className={`pokeCard ${extraContTailwind}`}>
                 {
                     React.Children.
                     toArray(children).map(child => React.cloneElement(child))

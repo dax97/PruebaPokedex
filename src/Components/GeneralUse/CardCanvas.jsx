@@ -4,7 +4,7 @@ function CardCanvas({children})
 {
     return(
         <>
-            <div className="flex w-full">
+            <div className="flex flex-wrap justify-center gap-4 w-full h-fit p-4 ">
                 {
                     React.Children.
                     toArray(children).map(child => React.cloneElement(child))
