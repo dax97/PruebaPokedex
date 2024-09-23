@@ -13,6 +13,7 @@ import { CardCanvas } from "../Components/GeneralUse/CardCanvas";
 //////* importaciones de custom hooks *//////
 import { useMenuLinks } from "../static/useMenuLinks";
 import { useProfileInfo } from "../static/useProfileInfo";
+import { useIsMobile } from "../hooks/useIsMobile";
 //////* Hojas de estilo *//////
 //////* Importaciones Multimedia *//////
 import NavbarLogoXl from "../assets/img/TitleLogo.png";
@@ -22,10 +23,14 @@ import miniLogo from "../assets/img/miniLogo.png";
 function Layout({children, mainLogo})
 {
 
+    //////////* Hooks *//////////
+
+    const isMobile = useIsMobile();
+
     //////////* Estados *//////////
     const [navbarSize, setNavbarSize] = React.useState({
         size: true,
-        display: false
+        display: isMobile ? false : true
     });
 
     const [navContent, setNavContent] = React.useState({
@@ -50,7 +55,7 @@ function Layout({children, mainLogo})
     //////////* demo de uso de perfil *//////////
     const { userInfo } = useProfileInfo();
 
-    //////////* Control de despliegue de navbar *//////////
+    //////////* Control de expansion de navbar *//////////
     function navSizeHandler()
     {
         if(!navbarSize.size)
@@ -69,9 +74,17 @@ function Layout({children, mainLogo})
 
     }
 
+    //////////* Control de expansion de navbar *//////////
+    function toggleNavbar() {
+        setNavbarSize((prev) => ({
+        ...prev,
+        display: !prev.display,
+        }));
+    }
+
     function closeNavbar()
     {
-        if(navbarSize.size === false)
+        if(isMobile === false && navbarSize.size === false)
         {
             setNavContent({
                 navLogo: miniLogo,
@@ -80,8 +93,7 @@ function Layout({children, mainLogo})
                 typeSize: false,
                 profileSize: false,
             })
-        }
-        else{
+        }else{
             setNavContent({
                 navLogo: NavbarLogoXl,
                 navLogoSize: "",
@@ -97,19 +109,28 @@ function Layout({children, mainLogo})
         closeNavbar();
     },[navbarSize.size])
 
-    React.useEffect(() => {
-        console.log(navContent)
-    },[navContent])
+    /* console.log(window.innerWidth)
+    console.log(isMobile) */
 
     return(
         <div className="flex h-screen w-screen">
             <Navbar
                 isOpen={navbarSize.size}
+                isDisplayed={navbarSize.display}
             >
-                <NavbarLogo 
-                    mainLogo={navContent.navLogo}
-                    size={navContent.navLogoSize}
-                />
+                <section>
+                    <NavbarLogo 
+                        mainLogo={navContent.navLogo}
+                        size={navContent.navLogoSize}
+                    />
+                    {
+                        isMobile &&
+                        <div className="flex items-center justify-center burguerButton h-full w-fit p-2 bg-gray-700" onClick={isMobile ? toggleNavbar : navSizeHandler}>
+                            <FontAwesomeIcon className="burguerButtonIcon h-9 " icon={faBars} color="white"/>
+                        </div>
+                    }
+                    
+                </section>
                 <br />
                 <NavbarMenu
                     menuSize={navContent.menuSize}
@@ -139,9 +160,9 @@ function Layout({children, mainLogo})
                     menuSize={navContent.menuSize}
                 />
             </Navbar>
-            <div className="flex-1 flex flex-col relative w-5/6">
+            <div className="block w-full static z-0 md:z-auto md:flex-1 md:flex md:flex-col md:relative md:w-5/6">
                 <header className="flex items-center justify-center bg-transparent h-16 w-full">
-                    <div className="flex items-center justify-center burguerButton h-full w-fit p-2 bg-gray-700" onClick={navSizeHandler}>
+                    <div className="flex items-center justify-center burguerButton h-full w-fit p-2 bg-gray-700" onClick={isMobile ? toggleNavbar : navSizeHandler}>
                         <FontAwesomeIcon className="burguerButtonIcon h-9 " icon={faBars} color="white"/>
                     </div>
                     <div className="titleLogo flex items-center justify-center h-full w-full">

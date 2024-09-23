@@ -5,7 +5,7 @@ import { faSquareArrowUpRight } from "@fortawesome/free-solid-svg-icons";
 function NavbarProfile(props)
 {
     return(
-        <div className={`profile-details flex w-full ${props.menuSize ? " p-4 border-t-8 border-gray-700": "mt-auto"}`}>
+        <div className={`profile-details flex w-full mt-auto ${props.menuSize ? " p-4 border-t-8 border-gray-700": "md: mt-auto"}`}>
             <section className={`${props.menuSize ? " w-3/5": "w-full"}`}>
                 <div className={`profile-content flex items-center ${props.menuSize ? "space-x-3": ""}`}>
                     <img className="h-10 w-10 rounded-full" src={!props.pokeDexPhoto ? profilePng : props.pokeDexPhoto} alt="Nombre de Usuario"/>

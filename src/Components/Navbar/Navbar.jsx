@@ -1,15 +1,23 @@
 import React from "react";
 
-function Navbar({children, isOpen, isdisplayed})
+function Navbar({children, isOpen, isDisplayed})
 {
 
     return(
-        <nav className={`flex flex-none flex-col relative top-0 left-0 h-full bg-red-600 text-white shadow-lg ${isOpen ? " w-1/6" : "w-fit p-2"}`}>
+        <>
             {
-                React.Children.
-                toArray(children).map(child => React.cloneElement(child))
+                isDisplayed &&
+                <nav className={`block w-full fixed z-10 bg-red-600 text-white top-0 left-0 h-full transition-all 
+                    duration-300 shadow-lg md:z-auto md:flex md:flex-none md:flex-col md:relative
+                    ${isOpen ? "md:w-1/6" : "md:w-fit p-2"}`
+                }>
+                {
+                    React.Children.
+                    toArray(children).map(child => React.cloneElement(child))
+                }
+                </nav>
             }
-        </nav>
+        </>
     );
 }
 

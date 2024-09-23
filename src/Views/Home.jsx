@@ -7,6 +7,7 @@ import { FavoriteStarButton } from "../Components/GeneralUse/FavoriteStarButton"
 import { TypeSticker } from "../Components/GeneralUse/TypeSicker";
 //////* importaciones de custom hooks *//////
 import { usePokecardsDemo } from "../Demos/usePokeCardsDemo";
+import { useIsMobile } from "../hooks/useIsMobile";
 //////* Hojas de estilo *//////
 //////* Importaciones Multimedia *//////
 import mainLogo from "../assets/img/TitleLogo.png";
@@ -15,8 +16,13 @@ import NormalType from "../assets/img/TypeStickers/NormalType.png";
 
 function Home()
 {
+    //////////* Hooks *//////////
+    const isMobile = useIsMobile();
+    //////////* demos *//////////
     const { cardsDemo, pokemonDemo } = usePokecardsDemo()
     var urlNum = cardsDemo.results[0].url;
+
+    //////////* Variables *//////////
     const numero = pokemonDemo.id || urlNum;
     return(
         <Layout
@@ -25,7 +31,7 @@ function Home()
             {
                 cardsDemo.results.map(card => <PokeCard
                     key={card.name}
-                    extraContTailwind={"relative w-[18%] md:w-1/5 border-4 border-gray-500 mx-1 h-fit"}
+                    extraContTailwind={"relative w-full md:w-[18%] md:w-1/5 border-4 border-gray-500 mx-1 h-fit"}
                 >
                     <div className="border-4 border-gray-300">
                         {/* sprite count 1302 se refieren en server, son un chingo. */}
@@ -34,7 +40,7 @@ function Home()
                         </div>
                         <section className="flex border-t-2 border-black w-full">
                             {/* numero de pokemon */}
-                            <div className="pokecardNumber relative w-4/5 pl-px">
+                            <div className="pokecardNumber relative pl-px w-full md:w-4/5 lg:w-full">
                                 <span>
                                     {
                                         "#50"
@@ -44,7 +50,7 @@ function Home()
                             {/* boton de favoritos */}
                             <FavoriteStarButton
                                 isFavorite={false}
-                                extraContTailWind={"pokecardNumber relative w-1/5 pr-5"}
+                                extraContTailWind={`pokecardNumber relative w-auto md:w-1/5 lg:w-auto`}
                             ></FavoriteStarButton>
                         </section>
                         {/* Nombre */}
